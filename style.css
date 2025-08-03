@@ -1,0 +1,146 @@
+:root {
+  --netflix-red: #E50914;
+  --bg-dark: #121212; /* Couleur de fond plus sombre et moderne */
+  --text-light: #E0E0E0; /* Texte plus doux et moins agressif */
+  --card-shadow: rgba(0, 0, 0, 0.6); /* Ombrage plus subtil */
+  --transition-speed: 0.4s; /* Transition légèrement plus lente */
+  --font-primary: 'Inter', 'Helvetica Neue', Arial, sans-serif; /* Polices modernes et lisibles */
+}
+
+/* Reset global pour une meilleure compatibilité */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-primary);
+}
+
+/* Style du corps */
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  line-height: 1.6;
+  padding: 1.5rem;
+}
+
+/* En-tête du site */
+.site-header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--netflix-red);
+  letter-spacing: 2px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+/* Conteneur des cartes */
+.cards {
+  display: flex;
+  gap: 1.2rem;
+  overflow-x: auto;
+  padding-bottom: 1.5rem;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+
+/* Personnalisation du scrollbar */
+.cards::-webkit-scrollbar {
+  height: 8px;
+}
+.cards::-webkit-scrollbar-thumb {
+  background-color: var(--netflix-red);
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+.cards::-webkit-scrollbar-thumb:hover {
+  background-color: #b0060f;
+}
+
+/* Style des cartes individuelles */
+.card {
+  flex: 0 0 220px;
+  background-color: #1f1f1f;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px var(--card-shadow);
+  scroll-snap-align: start;
+  transition: transform var(--transition-speed), box-shadow 0.3s;
+}
+.card:hover {
+  transform: scale(1.07);
+  box-shadow: 0 12px 24px var(--card-shadow);
+}
+
+/* Image de la carte */
+.card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+.card:hover img {
+  transform: scale(1.05);
+}
+
+/* Contenu de la carte */
+.card-body {
+  padding: 1rem;
+}
+.card-body h2 {
+  font-size: 1.2rem;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  color: #fff;
+}
+.card-body a {
+  color: var(--netflix-red);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+.card-body a:hover {
+  color: #b0060f;
+  text-decoration: underline;
+}
+
+/* Sections pour recettes et shopping */
+.recipe, .shopping {
+  margin-top: 3rem;
+}
+.recipe h2, .shopping h2 {
+  font-size: 1.75rem;
+  color: var(--netflix-red);
+  margin-bottom: 1rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* Listes de recettes et shopping */
+.recipe ol, .shopping ul {
+  margin-left: 2rem;
+  list-style-position: inside;
+}
+.shopping ul li {
+  margin: 0.25rem 0;
+}
+
+/* Responsive pour petits écrans */
+@media (max-width: 600px) {
+  .cards {
+    flex-direction: column;
+  }
+  .card {
+    flex: 1 1 auto;
+    max-width: 100%;
+  }
+  body {
+    padding: 1rem;
+  }
+  .site-header h1 {
+    font-size: 2rem;
+  }
+}
+
